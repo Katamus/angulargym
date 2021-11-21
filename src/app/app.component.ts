@@ -7,9 +7,19 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angulargym ';
-  
-  constructor(public auth: AngularFireAuth){}
+  title:string = 'angulargym ';
+  cargando:boolean = true;
+  usuario!:any;
+  constructor(public auth: AngularFireAuth){
+    this.auth.user.subscribe((usuario)=>{
+      setTimeout(() => {
+        console.log(usuario);
+        this.usuario = usuario;
+        this.cargando = false;
+      }, 2000);
+    });
+
+  }
 
   ngOnInit(): void {
     console.log(this.auth.user)
