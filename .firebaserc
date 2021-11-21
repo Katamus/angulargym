@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mastergym-2ab63": {
+      "hosting": {
+        "angulargym": [
+          "mastergym-2ab63"
+        ]
+      }
+    }
+  }
+}
