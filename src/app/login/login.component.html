@@ -1,1 +1,17 @@
-<p>login works!</p>
+<div class="container" >
+    <div class="text-center">
+        <h3> Bienvenido, por favor ingrese sus datos</h3>
+        <img src="assets/logo.png" alt="" style="width: 250Px; height: 250px;"> 
+    </div>
+    <form [formGroup]= 'formularioLogin' >
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo Electronico</label>
+          <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ingrese su correo">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" formControlName="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+        </div>
+        <button [disabled]="!formularioLogin.valid" type="submit" class="btn btn-primary" (click)="ingresar()" >Ingresar</button>
+    </form>
+</div>

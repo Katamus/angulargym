@@ -16,17 +16,13 @@ export class AppComponent {
         console.log(usuario);
         this.usuario = usuario;
         this.cargando = false;
-      }, 2000);
+      }, 1000);
     });
 
   }
 
   ngOnInit(): void {
     console.log(this.auth.user)
-  }
-
-  login(){
-    this.auth.signInWithEmailAndPassword("criscahu@hotmail.com","123456");
   }
 
   logout() {
