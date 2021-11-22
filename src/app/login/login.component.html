@@ -6,12 +6,29 @@
     <form [formGroup]= 'formularioLogin' >
         <div class="mb-3">
           <label for="email" class="form-label">Correo Electronico</label>
-          <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ingrese su correo">
+          <input type="email"  formControlName="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ingrese su correo">
+          <div *ngIf= "formularioLogin.controls['email'].invalid && formularioLogin.controls['email'].dirty" class="alert alert-danger" role="alert">
+              <span *ngIf= "formularioLogin.controls['email'].errors?.required" >
+                Correo es requerido
+              </span>
+              <span *ngIf= "formularioLogin.controls['email'].errors?.email">
+                Correo no es valido
+              </span>
+          </div>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" formControlName="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+          <input type="password" (keyUp.enter)="ingresar()" formControlName="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+          <div *ngIf= "formularioLogin.controls['password'].invalid && formularioLogin.controls['password'].dirty" class="alert alert-danger" role="alert">
+            <span *ngIf= "formularioLogin.controls['password'].errors?.required" >
+              La contraseña es requerida
+            </span>
+        </div>
         </div>
         <button [disabled]="!formularioLogin.valid" type="submit" class="btn btn-primary" (click)="ingresar()" >Ingresar</button>
     </form>
+
+    <div class="alert alert-warning" *ngIf="!datosCorrectos" role="alert">
+        {{textoError}}
+    </div>
 </div>
