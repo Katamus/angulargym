@@ -10,15 +10,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { EncabezadoComponent } from './encabezado/encabezado.component';
+import { ListadoClientesComponent } from './listado-clientes/listado-clientes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    EncabezadoComponent
+    EncabezadoComponent,
+    ListadoClientesComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { EncabezadoComponent } from './encabezado/encabezado.component';
     AccordionModule.forRoot(),
     ReactiveFormsModule,
     NgxSpinnerModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

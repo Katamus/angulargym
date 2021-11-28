@@ -23,9 +23,7 @@ export class AppComponent {
     console.log(this.auth.user)
   }
 
-  logout() {
-    this.auth.signOut();
-  }
+  
 
 
 
