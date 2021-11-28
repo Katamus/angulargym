@@ -12,11 +12,9 @@ export class AppComponent {
   usuario!:any;
   constructor(public auth: AngularFireAuth){
     this.auth.user.subscribe((usuario)=>{
-      setTimeout(() => {
         console.log(usuario);
         this.usuario = usuario;
         this.cargando = false;
-      }, 1000);
     });
 
   }
