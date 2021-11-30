@@ -14,13 +14,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { EncabezadoComponent } from './encabezado/encabezado.component';
 import { ListadoClientesComponent } from './listado-clientes/listado-clientes.component';
+import { AgregarClienteComponent } from './agregar-cliente/agregar-cliente.component';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     EncabezadoComponent,
-    ListadoClientesComponent
+    ListadoClientesComponent,
+    AgregarClienteComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { ListadoClientesComponent } from './listado-clientes/listado-clientes.co
     ReactiveFormsModule,
     NgxSpinnerModule,
     BsDropdownModule.forRoot(),
+    ProgressbarModule.forRoot(),
     FormsModule
   ],
   providers: [],
