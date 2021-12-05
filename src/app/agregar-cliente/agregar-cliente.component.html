@@ -69,14 +69,10 @@
                 <div class="form-group">
                     <br/>
                     <label for="" class="form-label">Imagen</label>
-                    <input type="file" (change)="subirImagen($event)" formControlName="imgUrl" class="form-control" >
-
-
-
-
+                    <input type="file" (change)="subirImagen($event)" class="form-control" >
                     <div *ngIf= "formularioCliente.controls['imgUrl'].invalid && formularioCliente.controls['imgUrl'].dirty" class="alert alert-danger" role="alert">
-                        <span *ngIf= "formularioCliente.controls['imgUrl'].errors?.required" >
-                            fecha nacimiento es requerido
+                        <span *ngIf= "this.urlImage == null || this.urlImage " >
+                            Seleccione una imagen
                         </span>
                     </div>
                 </div>
@@ -89,7 +85,8 @@
             </div>
             <div class="col-sm-4">
                 <br/>
-                <button [disabled]="!formularioCliente.valid" class="btn btn-primary" (click)="agregar()" >agregar</button>
+                <button *ngIf="!esEditable" [disabled]="!formularioCliente.valid && !urlImage " class="btn btn-primary" (click)="agregar()" >agregar</button>
+                <button *ngIf="esEditable" [disabled]="!formularioCliente.valid && !urlImage " class="btn btn-primary" (click)="editar()" >Editar</button>
             </div>
         </div>
     </form>

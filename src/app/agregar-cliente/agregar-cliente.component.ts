@@ -13,6 +13,8 @@ export class AgregarClienteComponent implements OnInit {
   formularioCliente!:FormGroup;
   porcentajeSubida:number = 0;
   urlImage!:string;
+  esEditable:boolean = false;
+  id!:string;
   constructor( private fb:FormBuilder, private storage: AngularFireStorage,private db: AngularFirestore, private activeRoute: ActivatedRoute) {
 
   }
@@ -31,22 +33,24 @@ export class AgregarClienteComponent implements OnInit {
       imgUrl:["",Validators.required]
     });
 
-    let id = this.activeRoute.snapshot.params.clienteID;
-    this.db.doc<any>('Clientes/'+id).valueChanges().subscribe((cliente)=>{
-      if(typeof cliente != 'undefined'){
-        console.log(cliente);
+    this.id = this.activeRoute.snapshot.params.clienteID;
+      if(typeof this.id != 'undefined'){
+        this.esEditable = true;
+        this.db.doc<any>('Clientes/'+this.id).valueChanges().subscribe((cliente)=>{
+       // console.log(cliente);
         this.formularioCliente.setValue({
           nombre: cliente.nombre,
           apellido: cliente.apellido,
           correo: cliente.correo,
           cedula: cliente.cedula,
-          fechaNacimiento: cliente.fechaNacimiento,
+          fechaNacimiento: new Date(cliente.fechaNacimiento.seconds * 1000).toISOString().substring(0,10),
           telefono: cliente.telefono,
           imgUrl : ''
         });
-        this.urlImage = cliente.urlImage;
+        this.urlImage = cliente.imgUrl;
+      });
       }
-    });
+    
   }
 
   agregar(){
@@ -55,6 +59,19 @@ export class AgregarClienteComponent implements OnInit {
     console.log(this.formularioCliente.value);
     this.db.collection('Clientes').add(this.formularioCliente.value).then((termino)=>{
       console.log("Registro Creado");
+    });
+  }
+
+  editar(){
+    this.formularioCliente.value.imgUrl = this.urlImage;
+    this.formularioCliente.value.fechaNacimiento = new Date(this.formularioCliente.value.fechaNacimiento);
+
+    //console.log(this.formularioCliente.value);
+
+    this.db.doc('Clientes/'+this.id).update(this.formularioCliente.value).then((respuesta)=>{
+      console.log("Usuario modificado");
+    }).catch(()=>{
+      console.log('Error');
     });
   }
 
