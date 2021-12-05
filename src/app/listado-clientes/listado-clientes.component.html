@@ -13,7 +13,7 @@
                 <div class="card-body">
                   {{cliente.id}}
                   <h5 class="card-title">{{cliente.nombre}} {{cliente.apellido}}</h5>
-                  <a href="#" class="card-link">Editar</a>
+                  <a [routerLink]="['/agregar-clientes/',cliente.id]" href="#" class="card-link">Editar</a>
                   <a href="#" class="card-link text-danger">Desactivar</a>
                 </div>
               </div>

@@ -7,7 +7,10 @@ const routes: Routes = [{
   path:"listado-clientes", component:ListadoClientesComponent,
 },{
   path:"agregar-clientes", component:AgregarClienteComponent
-}];
+},{
+  path:"agregar-clientes/:clienteID", component:AgregarClienteComponent
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
