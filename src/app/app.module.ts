@@ -16,6 +16,7 @@ import { EncabezadoComponent } from './encabezado/encabezado.component';
 import { ListadoClientesComponent } from './listado-clientes/listado-clientes.component';
 import { AgregarClienteComponent } from './agregar-cliente/agregar-cliente.component';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     NgxSpinnerModule,
     BsDropdownModule.forRoot(),
     ProgressbarModule.forRoot(),
-    FormsModule
+    FormsModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
