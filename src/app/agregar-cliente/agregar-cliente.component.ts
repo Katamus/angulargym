@@ -3,6 +3,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2'
+import { MensakesService } from '../service/mensakes.service';
+
 
 @Component({
   selector: 'app-agregar-cliente',
@@ -15,7 +18,12 @@ export class AgregarClienteComponent implements OnInit {
   urlImage!:string;
   esEditable:boolean = false;
   id!:string;
-  constructor( private fb:FormBuilder, private storage: AngularFireStorage,private db: AngularFirestore, private activeRoute: ActivatedRoute) {
+  constructor( private fb:FormBuilder, 
+    private storage: AngularFireStorage,
+    private db: AngularFirestore, 
+    private activeRoute: ActivatedRoute,
+    private mensaje: MensakesService
+    ) {
 
   }
 
@@ -58,7 +66,7 @@ export class AgregarClienteComponent implements OnInit {
     this.formularioCliente.value.fechaNacimiento = new Date(this.formularioCliente.value.fechaNacimiento);
     console.log(this.formularioCliente.value);
     this.db.collection('Clientes').add(this.formularioCliente.value).then((termino)=>{
-      console.log("Registro Creado");
+      this.mensaje.mensajeCorrecto('Agregado!','Se agrego correctamente');
     });
   }
 
@@ -69,9 +77,9 @@ export class AgregarClienteComponent implements OnInit {
     //console.log(this.formularioCliente.value);
 
     this.db.doc('Clientes/'+this.id).update(this.formularioCliente.value).then((respuesta)=>{
-      console.log("Usuario modificado");
+      this.mensaje.mensajeCorrecto('Editado!','Cliente editado correctamente');
     }).catch(()=>{
-      console.log('Error');
+      this.mensaje.mensajeError ('Error Editando!','Error al editar un cliente');
     });
   }
 

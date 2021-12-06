@@ -17,6 +17,7 @@ import { ListadoClientesComponent } from './listado-clientes/listado-clientes.co
 import { AgregarClienteComponent } from './agregar-cliente/agregar-cliente.component';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { MensakesService } from './service/mensakes.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     FormsModule,
     AngularFireStorageModule
   ],
-  providers: [],
+  providers: [
+    MensakesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
