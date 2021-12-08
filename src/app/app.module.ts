@@ -18,6 +18,7 @@ import { AgregarClienteComponent } from './agregar-cliente/agregar-cliente.compo
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { MensakesService } from './service/mensakes.service';
+import { PreciosComponent } from './precios/precios.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MensakesService } from './service/mensakes.service';
     LoginComponent,
     EncabezadoComponent,
     ListadoClientesComponent,
-    AgregarClienteComponent
+    AgregarClienteComponent,
+    PreciosComponent
   ],
   imports: [
     BrowserModule,
