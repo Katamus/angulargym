@@ -2,6 +2,9 @@
     <div class="row mt-5">
         <div class="col-sm-8">
             <h4>Precios</h4>
+            <h6>
+                Click en el precio que desea modificar
+            </h6>
             <ul>
                 <li *ngFor="let precio of precios">
                     <a (click)="editarPrecio(precio)">
