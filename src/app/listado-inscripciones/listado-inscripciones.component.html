@@ -9,11 +9,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+          <tr *ngFor="let inscripcion of inscripciones" >
+            <th scope="row">{{inscripcion.clienteObtenido.nombre}} {{inscripcion.clienteObtenido.apellido}}</th>
+            <td>{{inscripcion.fecha | date }}</td>
+            <td>{{inscripcion.fechaFinaliza | date }}</td>
+            <td>
+              <img width="100px" [src]="inscripcion.clienteObtenido.imgUrl" alt="">
+            </td>
           </tr>
         </tbody>
     </table>
